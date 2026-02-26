@@ -22,6 +22,8 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.8s;
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.35),
+                15px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
 .card-container:hover .card {

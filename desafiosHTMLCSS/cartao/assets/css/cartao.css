@@ -15,7 +15,7 @@ body {
   padding: 25px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 15px 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .card img {
@@ -25,6 +25,9 @@ body {
   object-fit: cover;
   border: 3px solid #00c3ff;
   margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(0, 195, 255, 0.6),
+              0 0 30px rgba(0, 195, 255, 0.35); 
+  transition: box-shadow 0.3s ease;
 }
 
 .card h1 {
