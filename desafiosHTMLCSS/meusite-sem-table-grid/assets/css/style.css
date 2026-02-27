@@ -73,6 +73,20 @@ body {
     margin-bottom: 10px;
 }
 
+
+
+.menu a:link {
+    color: #fff; 
+}
+
+.menu a:hover {
+    color: red; 
+}
+
+.menu a:active {
+    color: yellow; 
+}
+
 .subtitle {
     color: #666;
 }
