@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #121220);
+  color: white;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 900px;
+  max-width: 90%;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.busca {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.busca input {
+  padding: 10px;
+  width: 300px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.busca button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #ff4c60;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.busca button:hover {
+  background: #ff2a40;
+}
+
+.anime-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav {
+  display: none;
+  background: #ffffff20;
+  border: none;
+  font-size: 25px;
+  color: white;
+  padding: 15px;
+  border-radius: 10%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav:hover {
+  background: #ffffff40;
+}
+
+.card {
+  width: 250px;
+  height: 420px;
+  background: #242430;
+  border-radius: 10px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.card p {
+  margin: 1px 0;
+  font-size: 14px;
+}
+
+.sinopse {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

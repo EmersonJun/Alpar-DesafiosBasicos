@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Busca de Animes</title>
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <h1>Busca de Animes</h1>
+        </header>
+
+        <section class="anime-area">
+            <button class="nav anterior" onclick="anterior()">◀</button>
+            <div id="resultado"></div>
+            <button class="nav proximo" onclick="proximo()">▶</button>
+        </section>
+
+        <section class="busca">
+            <input type="text" id="pesquisa" placeholder="Digite o nome do anime...">
+            <button onclick="buscarAnime()">Buscar</button>
+        </section>
+    </main>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
