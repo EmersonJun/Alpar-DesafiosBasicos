@@ -4,16 +4,23 @@ const btnAnterior = document.querySelector(".anterior");
 const btnProximo = document.querySelector(".proximo");
 
 async function buscarAnime(){
-    const texto = document.getElementById("pesquisa").value;
-    const url = `https://api.jikan.moe/v4/anime?q=${texto}`;
+    try{
 
-    const resposta = await fetch(url);
-    const dados = await resposta.json();
+        const texto = document.getElementById("pesquisa").value;
+        const url = `https://api.jikan.moe/v4/anime?q=${texto}`;
 
-    listaAnimes = dados.data;
-    indiceAtual = 0;
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
 
-    mostrarAnime();
+        listaAnimes = dados.data;
+        indiceAtual = 0;
+
+        mostrarAnime();
+
+    }catch(erro){
+        document.getElementById("resultado").innerHTML =
+        "<p>Erro ao buscar anime</p>";
+    }
 }
 
 function mostrarAnime(){
@@ -43,18 +50,22 @@ function proximo(){
 
     if(indiceAtual < listaAnimes.length - 1){
         indiceAtual++;
-        mostrarAnime();
+    } else {
+        indiceAtual = 0;
     }
 
+    mostrarAnime();
 }
 
 function anterior(){
 
     if(indiceAtual > 0){
         indiceAtual--;
-        mostrarAnime();
+    } else {
+        indiceAtual = listaAnimes.length - 1;
     }
 
+    mostrarAnime();
 }
 
 function atualizarBotoes(){
@@ -65,9 +76,7 @@ function atualizarBotoes(){
         return;
     }
 
-    btnAnterior.style.display = indiceAtual === 0 ? "none" : "flex";
-
-    btnProximo.style.display =
-        indiceAtual === listaAnimes.length - 1 ? "none" : "flex";
+    btnAnterior.style.display = "flex";
+    btnProximo.style.display = "flex";
 }
 
