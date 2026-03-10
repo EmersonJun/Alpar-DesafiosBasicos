@@ -1,0 +1,6 @@
+node_modules/
+*.exe
+*.zip
+*.rar
+*.7z
+.DS_Store
