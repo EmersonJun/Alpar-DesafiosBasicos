@@ -1,0 +1,177 @@
+<!-- Objetivo: Criar um formulário simples com nome, e-mail, assunto e mensagem.
+Requisitos:
+ Use form-control, form-group, form-label, form-check, form-select.
+ Aplique feedback visual com is-invalid e is-valid.
+ O campo de assunto deve ser um select.
+ Adicione um botão com btn btn-primary.
+ Mostre uma mensagem de sucesso no envio (capture o envio do formulário com
+JS para mostrar a mensagem de sucesso). -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Portfólio</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">Meu Portfólio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Projetos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-fill">
+        <section class="bg-dark text-white text-center py-5">
+            <div class="container">
+                <img src="./img/Emerson.jpg" class="img-fluid rounded-circle mx-auto mb-4" width="150">
+                <h1 class="display-4 fw-bold">
+                    Olá, eu sou Emerson
+                </h1>
+                <p class="lead text-muted">
+                    Desenvolvedor focado em Web e Backend
+                </p>
+                <button class="btn btn-primary btn-lg">
+                    Ver projetos
+                </button>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">O que eu faço</h2>
+                    <p class="text-muted">Algumas das minhas principais habilidades</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">
+                                    Desenvolvimento Web
+                                </h5>
+                                <p class="card-text text-muted">
+                                    Criação de sites modernos, responsivos e rápidos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">
+                                    Backend
+                                </h5>
+                                <p class="card-text text-muted">
+                                    APIs, banco de dados e lógica de aplicações.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">
+                                    Consultoria
+                                </h5>
+                                <p class="card-text text-muted">
+                                    Ajudando empresas a criar soluções digitais.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-lg-6">
+                        <div class="p-4 bg-white shadow-sm h-100">
+                            <h2 class="fw-bold mb-3">Contato</h2>
+                            <p class="text-muted mb-4">Envie uma mensagem</p>
+
+                            <form id="formContato" novalidate>
+                                <div class="mb-3">
+                                    <label class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="nome" required>
+                                    <div class="invalid-feedback">Informe seu nome</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">E-mail</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                    <div class="invalid-feedback">Informe um e-mail válido</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Assunto</label>
+                                    <select class="form-select" id="assunto" required>
+                                        <option value="">Selecione...</option>
+                                        <option>Orçamento</option>
+                                        <option>Dúvida</option>
+                                        <option>Parceria</option>
+                                    </select>
+                                    <div class="invalid-feedback">Selecione um assunto</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Mensagem</label>
+                                    <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+                                    <div class="invalid-feedback">Digite uma mensagem</div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+
+                                <div id="sucesso" class="alert alert-success mt-3 d-none">
+                                    Mensagem enviada com sucesso!
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="h-100 shadow-sm">
+                            <iframe src="https://www.google.com/maps?q=Sao%20Jose%20dos%20Pinhais&output=embed"
+                                width="100%" height="100%" style="border:0; min-height: 400px;" allowfullscreen=""
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">
+            © 2026 Emerson Junior
+        </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
