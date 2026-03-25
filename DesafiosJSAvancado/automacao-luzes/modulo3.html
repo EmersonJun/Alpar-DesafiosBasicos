@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Automação de Luzes</title>
+
+    <style>
+        .comodo {
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ligado {
+            background-color: yellow;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Controle de Luzes</h1>
+
+    <div id="quarto" class="comodo">Quarto</div>
+    <button data-comodo="quarto" data-acao="ligar">Ligar Quarto</button>
+    <button data-comodo="quarto" data-acao="desligar">Desligar Quarto</button>
+
+    <div id="sala" class="comodo">Sala</div>
+    <button data-comodo="sala" data-acao="ligar">Ligar Sala</button>
+    <button data-comodo="sala" data-acao="desligar">Desligar Sala</button>
+
+    <p id="mensagem"></p>
+
+    <script src="modulo3.js"></script>
+</body>
+</html>
