@@ -52,10 +52,7 @@ Ex: angular.module('app', []).service('UsuarioService', function() { ... }) -->
 
     <h1>{{ mensagem }}</h1>
 
-    <!-- CONTROLLER FILHO -->
     <div ng-controller="ListaController">
-
-        <!-- FILTROS -->
         <input type="text" placeholder="Buscar..." ng-model="filtro">
 
         <select ng-model="filtroTipo">
@@ -64,7 +61,6 @@ Ex: angular.module('app', []).service('UsuarioService', function() { ... }) -->
             <option value="Professor">Professor</option>
         </select>
 
-        <!-- CONTADORES -->
         <p>Total Alunos:
             {{ (usuarios | filter:{tipo:'Aluno'}).length }}
         </p>
@@ -73,7 +69,6 @@ Ex: angular.module('app', []).service('UsuarioService', function() { ... }) -->
             {{ (usuarios | filter:{tipo:'Professor'}).length }}
         </p>
 
-        <!-- LISTA -->
         <div class="user"
              ng-repeat="u in usuarios 
                         | filter:filtro 
