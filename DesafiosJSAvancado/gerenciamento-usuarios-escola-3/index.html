@@ -1,0 +1,91 @@
+<!-- Essa é uma continuação do desafio anterior.
+Hora de separar responsabilidades no app! Vamos criar um Service para lidar com os
+dados dos usuários e usar injeção de dependência no controller.
+Objetivo:
+Delegar a lógica de manipulação dos usuários para um service, mantendo o controller
+mais limpo.
+Requisitos:
+ Crie um módulo AngularJS com um service chamado UsuarioService.
+ No UsuarioService, implemente:
+ Um array privado de usuarios
+ Um método listar() que retorna esse array
+ Um método adicionar(usuario) para adicionar um novo usuário
+No AppController, injete o UsuarioService e use ele para:
+ Listar os usuários no scope
+ Adicionar um novo usuário (pode ser um botão com função)
+ Na tela, mostre os usuários com ng-repeat e adicione um formulário simples para
+adicionar novos (nome e tipo).
+Adicione um método remover(index) no service
+Crie um botão "Remover" para excluir usuários da lista
+Dica: use .controller() e .service() na mesma app
+Ex: angular.module('app', []).service('UsuarioService', function() { ... }) -->
+
+<!doctype html>
+<html ng-app="userApp" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuários</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input, select {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .user {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body ng-controller="AppController">
+
+    <h1>{{ mensagem }}</h1>
+
+    <!-- CONTROLLER FILHO -->
+    <div ng-controller="ListaController">
+
+        <!-- FILTROS -->
+        <input type="text" placeholder="Buscar..." ng-model="filtro">
+
+        <select ng-model="filtroTipo">
+            <option value="">Todos</option>
+            <option value="Aluno">Aluno</option>
+            <option value="Professor">Professor</option>
+        </select>
+
+        <!-- CONTADORES -->
+        <p>Total Alunos:
+            {{ (usuarios | filter:{tipo:'Aluno'}).length }}
+        </p>
+
+        <p>Total Professores:
+            {{ (usuarios | filter:{tipo:'Professor'}).length }}
+        </p>
+
+        <!-- LISTA -->
+        <div class="user"
+             ng-repeat="u in usuarios 
+                        | filter:filtro 
+                        | filter:{tipo: filtroTipo}">
+
+            <h3>{{ u.nome | uppercase }}</h3>
+            <p>Tipo: {{ u.tipo }}</p>
+            <p>Cadastro: {{ u.dataCadastro | date:'dd/MM/yyyy' }}</p>
+
+        </div>
+
+    </div>
+<script src="script.js"></script>
+</body>
+</html>

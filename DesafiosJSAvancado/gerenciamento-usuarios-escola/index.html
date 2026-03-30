@@ -15,3 +15,51 @@ e mostre os dados do usuário na tela com {{ }} ou ng-bind.
 Mostre uma imagem condicional com ng-if, dependendo se o tipo do usuário é "Aluno" ou
 "Professor"
 Guarde esse desafio no repositório de sempre na pasta: gerenciamento-usuarios-escola -->
+
+<!doctype html>
+<html lang="pt-br" ng-app="appUsuarios">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gerenciamento de Usuários</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      img {
+        width: 150px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="AppController">
+    <h1 ng-bind="mensagem"></h1>
+
+    <h2>Usuário:</h2>
+    <p><strong>Nome:</strong> {{ usuario.nome }}</p>
+    <p><strong>Tipo:</strong> {{ usuario.tipo }}</p>
+
+    <div ng-if="usuario.tipo === 'Aluno'">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
+        alt="Aluno"
+      />
+      <p>Este usuário é um aluno</p>
+    </div>
+
+    <div ng-if="usuario.tipo === 'Professor'">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+        alt="Professor"
+      />
+      <p>Este usuário é um professor</p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

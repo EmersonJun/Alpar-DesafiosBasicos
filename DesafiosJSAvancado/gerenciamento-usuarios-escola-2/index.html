@@ -1,0 +1,87 @@
+<!-- Essa é uma continuação do desafio anterior.
+Agora que já temos o AngularJS rodando, vamos trabalhar com escopos aninhados e
+aplicar filtros diretamente na visualização.
+Objetivo:
+Listar vários usuários na tela, filtrá-los por tipo (Aluno ou Professor) e exibir dados
+formatados com filtros.
+Requisitos:
+No seu AppController, crie um array chamado usuarios, contendo pelo menos 5 objetos
+com as propriedades:
+ nome
+ tipo ("Aluno" ou "Professor")
+ dataCadastro (use new Date())
+Mostre todos os usuários na tela usando ng-repeat.
+Acima da lista, adicione um campo de busca com ng-model="filtro"
+e filtre os usuários em tempo real com | filter:filtro.
+Adicione outro campo ng-model="filtroTipo" para filtrar por tipo (Aluno ou Professor).
+Use | filter:{ tipo: filtroTipo }.
+Use filtros AngularJS para:
+Mostrar o nome com uppercase
+Mostrar dataCadastro com date:'dd/MM/yyyy'
+Separe a lista em um ng-controller diferente e veja como os escopos funcionam.
+Mostre o total de alunos e professores com {{ (usuarios | filter:{tipo:'Aluno'}).length }} -->
+
+<!doctype html>
+<html ng-app="userApp" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuários</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input, select {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .user {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body ng-controller="AppController">
+
+    <h1>{{ mensagem }}</h1>
+
+    <div ng-controller="ListaController">
+
+        <input type="text" placeholder="Buscar..." ng-model="filtro">
+
+        <select ng-model="filtroTipo">
+            <option value="">Todos</option>
+            <option value="Aluno">Aluno</option>
+            <option value="Professor">Professor</option>
+        </select>
+
+        <p>Total Alunos:
+            {{ (usuarios | filter:{tipo:'Aluno'}).length }}
+        </p>
+
+        <p>Total Professores:
+            {{ (usuarios | filter:{tipo:'Professor'}).length }}
+        </p>
+        <div class="user"
+             ng-repeat="u in usuarios 
+                        | filter:filtro 
+                        | filter:{tipo: filtroTipo}">
+
+            <h3>{{ u.nome | uppercase }}</h3>
+            <p>Tipo: {{ u.tipo }}</p>
+            <p>Cadastro: {{ u.dataCadastro | date:'dd/MM/yyyy' }}</p>
+
+        </div>
+
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
