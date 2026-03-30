@@ -21,66 +21,115 @@ Dica: use .controller() e .service() na mesma app
 Ex: angular.module('app', []).service('UsuarioService', function() { ... }) -->
 
 <!doctype html>
-<html ng-app="userApp" lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Usuários</title>
+<html ng-app="appUsuarios" lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Usuários</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
+    <script src="script.js"></script>
+    <script src="usuario.service.js"></script>
+    <script src="app.controller.js"></script>
+
     <style>
-        body {
-            font-family: Arial;
-            padding: 20px;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        input, select {
-            margin: 5px;
-            padding: 5px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        padding: 20px;
+      }
 
-        .user {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-top: 10px;
-        }
+      h1 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      form {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      form input,
+      form select {
+        padding: 8px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .user-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .user-info h3 {
+        color: #222;
+      }
+
+      .user-info p {
+        color: #666;
+        font-size: 14px;
+      }
+
+      .btn-remove {
+        background-color: #e74c3c;
+      }
+
+      .btn-remove:hover {
+        background-color: #c0392b;
+      }
     </style>
-</head>
+  </head>
 
-<body ng-controller="AppController">
+  <body ng-controller="AppController">
+    <h1>Usuários</h1>
 
-    <h1>{{ mensagem }}</h1>
+    <form ng-submit="adicionarUsuario()">
+      <input type="text" placeholder="Nome" ng-model="novo.nome" />
 
-    <div ng-controller="ListaController">
-        <input type="text" placeholder="Buscar..." ng-model="filtro">
+      <select ng-model="novo.tipo">
+        <option value="Aluno">Aluno</option>
+        <option value="Professor">Professor</option>
+      </select>
 
-        <select ng-model="filtroTipo">
-            <option value="">Todos</option>
-            <option value="Aluno">Aluno</option>
-            <option value="Professor">Professor</option>
-        </select>
+      <button type="submit">Adicionar</button>
+    </form>
 
-        <p>Total Alunos:
-            {{ (usuarios | filter:{tipo:'Aluno'}).length }}
-        </p>
+    <div ng-repeat="u in usuarios track by $index">
+      <h3>{{ u.nome }}</h3>
+      <p>{{ u.tipo }}</p>
 
-        <p>Total Professores:
-            {{ (usuarios | filter:{tipo:'Professor'}).length }}
-        </p>
-
-        <div class="user"
-             ng-repeat="u in usuarios 
-                        | filter:filtro 
-                        | filter:{tipo: filtroTipo}">
-
-            <h3>{{ u.nome | uppercase }}</h3>
-            <p>Tipo: {{ u.tipo }}</p>
-            <p>Cadastro: {{ u.dataCadastro | date:'dd/MM/yyyy' }}</p>
-
-        </div>
-
+      <button ng-click="removerUsuario($index)">Remover</button>
     </div>
-<script src="script.js"></script>
-</body>
+  </body>
 </html>
