@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="icon" href="./assets/img/logo.png" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <title>MoodTrack</title>
+  </head>
+    <body
+      ng-app="moodTrackApp"
+      ng-controller="MainController"
+      class="container mt-4"
+    >
+      <h1>MoodTrack</h1>
+
+      <div class="card p-3 mt-3">
+        <h4>Novo registro</h4>
+
+        <input type="date" class="form-control mb-2" ng-model="novo.data" />
+        <select class="form-control mb-2" ng-model="novo.humor">
+          <option value="">Escolha o humor</option>
+          <option value="1">Muito triste</option>
+          <option value="2">Triste</option>
+          <option value="3">Neutro</option>
+          <option value="4">Feliz</option>
+          <option value="5">Muito Feliz</option>
+        </select>
+
+        <textarea
+          class="form-control mb-2"
+          placeholder="observacao"
+          ng-model="novo.obs"
+        ></textarea>
+        <button class="btn btn-primary" ng-click="salvar()">Salvar</button>
+      </div>
+
+      <div class="card p-3 mb-3">
+        <h4>Filtros</h4>
+
+        <input type="date" class="form-control mb-2" ng-model="filtro.data" />
+
+        <select class="form-control" ng-model="filtro.humor">
+          <option value="">Todos</option>
+          <option value="1">😢</option>
+          <option value="2">😐</option>
+          <option value="3">😊</option>
+          <option value="4">😁</option>
+        </select>
+      </div>
+
+      <div class="mt-4">
+        <h4>Registros</h4>
+        <div class="card p-2 mb-2" ng-repeat="r in registros | filter:filtro">
+          <strong>{{r.data}}</strong> - {{r.humor}}
+          <p>{{r.obs}}</p>
+        </div>
+      </div>
+    </body>
+  </body>
+  <script src="./assets/js/models.js"></script>
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/controller.js"></script>
+</html>

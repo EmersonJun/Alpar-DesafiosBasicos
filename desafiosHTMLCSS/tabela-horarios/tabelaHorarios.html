@@ -1,44 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      border-collapse: collapse;
+      background-color: #fff;
+    }
+
+    thead {
+      background-color: #333;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    td,
+    th {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+  <body>
     <table border="1">
-        <thead>
-        
-                <td>horarios</td>
-                <td>segunda</td>
-                <td>terca</td>
-                <td>quarta</td>
-                <td>quinta</td>
-                <td>sexta</td>
-                <td>sabado</td>
-                <td>domingo e <br>feriados</td>
-            
-        </thead>
-        <tbody>
-            <tr>
-                <td>manha</td>
-                <td> 08:00 <br> 12:00</td>
-                <td  rowspan="2">fechado</td>
-                <td> 08:00 <br> 12:00</td>
-                <td> 08:00 <br> 12:00</td>
-                <td> 08:00 <br> 12:00</td>
-                <td> 08:00 <br> 12:00</td>
-                <td rowspan="2"> 08:00 <br> 12:00</td>
-            </tr>
-            <tr>
-                <td>manha</td>
-                <td> 14:00 <br> 18:00</td>
-                <td> 14:00 <br> 18:00</td>
-                <td> 14:00 <br> 18:00</td>
-                <td> 14:00 <br> 18:00</td>
-                <td> 14:00 <br> 18:00</td>
-            </tr>
-        </tbody>
+      <thead>
+        <td>horarios</td>
+        <td>segunda</td>
+        <td>terca</td>
+        <td>quarta</td>
+        <td>quinta</td>
+        <td>sexta</td>
+        <td>sabado</td>
+        <td>domingo e <br />feriados</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td>manha</td>
+          <td>
+            08:00 <br />
+            12:00
+          </td>
+          <td rowspan="2">fechado</td>
+          <td>
+            08:00 <br />
+            12:00
+          </td>
+          <td>
+            08:00 <br />
+            12:00
+          </td>
+          <td>
+            08:00 <br />
+            12:00
+          </td>
+          <td>
+            08:00 <br />
+            12:00
+          </td>
+          <td rowspan="2">
+            08:00 <br />
+            12:00
+          </td>
+        </tr>
+        <tr>
+          <td>manha</td>
+          <td>
+            14:00 <br />
+            18:00
+          </td>
+          <td>
+            14:00 <br />
+            18:00
+          </td>
+          <td>
+            14:00 <br />
+            18:00
+          </td>
+          <td>
+            14:00 <br />
+            18:00
+          </td>
+          <td>
+            14:00 <br />
+            18:00
+          </td>
+        </tr>
+      </tbody>
     </table>
-</body>
+  </body>
 </html>
