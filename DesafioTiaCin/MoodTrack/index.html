@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <link rel="icon" href="./assets/img/logo.png" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link
@@ -12,58 +11,100 @@
     />
     <title>MoodTrack</title>
   </head>
-    <body
-      ng-app="moodTrackApp"
-      ng-controller="MainController"
-      class="container mt-4"
-    >
-      <h1>MoodTrack</h1>
+  <body
+    ng-app="moodTrackApp"
+    ng-controller="MainController"
+    class="container mt-4"
+  >
+    <div class="app-container">
+      <header class="cabecalho">
+        <div class="header-left">
+          <img src="./assets/img/logo.png" alt="Logo" class="logo" />
+          <h2>MoodTrack</h2>
+        </div>
+      </header>
 
-      <div class="card p-3 mt-3">
-        <h4>Novo registro</h4>
+      <div class="conteudo">
+        <div class="esquerda">
+          <div class="box">
+            <h5>Novo registro</h5>
 
-        <input type="date" class="form-control mb-2" ng-model="novo.data" />
-        <select class="form-control mb-2" ng-model="novo.humor">
-          <option value="">Escolha o humor</option>
-          <option value="1">Muito triste</option>
-          <option value="2">Triste</option>
-          <option value="3">Neutro</option>
-          <option value="4">Feliz</option>
-          <option value="5">Muito Feliz</option>
-        </select>
+            <input type="date" class="form-control mb-2" ng-model="novo.data" />
 
-        <textarea
-          class="form-control mb-2"
-          placeholder="observacao"
-          ng-model="novo.obs"
-        ></textarea>
-        <button class="btn btn-primary" ng-click="salvar()">Salvar</button>
-      </div>
+            <select class="form-control mb-2" ng-model="novo.humor">
+              <option value="">Escolha o humor</option>
+              <option value="1">😢</option>
+              <option value="2">😐</option>
+              <option value="3">😊</option>
+              <option value="4">😁</option>
+              <option value="5">🤩</option>
+            </select>
 
-      <div class="card p-3 mb-3">
-        <h4>Filtros</h4>
+            <textarea
+              class="form-control mb-2"
+              placeholder="observacao"
+              ng-model="novo.obs"
+            ></textarea>
 
-        <input type="date" class="form-control mb-2" ng-model="filtro.data" />
+            <button class="btn btn-primary w-100" ng-click="salvar()">
+              Salvar
+            </button>
+          </div>
 
-        <select class="form-control" ng-model="filtro.humor">
-          <option value="">Todos</option>
-          <option value="1">😢</option>
-          <option value="2">😐</option>
-          <option value="3">😊</option>
-          <option value="4">😁</option>
-        </select>
-      </div>
+          <div class="box">
+            <h5>Filtros</h5>
 
-      <div class="mt-4">
-        <h4>Registros</h4>
-        <div class="card p-2 mb-2" ng-repeat="r in registros | filter:filtro">
-          <strong>{{r.data}}</strong> - {{r.humor}}
-          <p>{{r.obs}}</p>
+            <input
+              type="date"
+              class="form-control mb-2"
+              ng-model="filtro.data"
+            />
+
+            <select class="form-control" ng-model="filtro.humor">
+              <option value="">Todos</option>
+              <option value="1">😢</option>
+              <option value="2">😐</option>
+              <option value="3">😊</option>
+              <option value="4">😁</option>
+              <option value="5">🤩</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="direita">
+          <div class="box historico">
+            <h5>Registros</h5>
+
+            <div
+              class="registro"
+              ng-repeat="r in registrosFiltrados() track by $index"
+            >
+              <strong>{{r.data}}</strong> - {{getEmoji(r.humor)}}
+              <p>{{r.obs}}</p>
+              <button
+                ng-click="remover($index)"
+                style="
+                  background: none;
+                  border: none;
+                  color: #e55;
+                  cursor: pointer;
+                  font-size: 16px;
+                "
+              >
+                🗑
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </body>
+    </div>
   </body>
-  <script src="./assets/js/models.js"></script>
-  <script src="./assets/js/script.js"></script>
-  <script src="./assets/js/controller.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/models.js"></script>
+  <script src="assets/js/controller.js"></script>
 </html>
